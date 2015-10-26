@@ -19,13 +19,14 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/authentication")
 public class AuthenticationController {
     
-    @RequestMapping(value="/login", method = RequestMethod.GET)
+    @RequestMapping(value="/login.do")
     public ModelAndView login(@RequestParam(value="error", required = false) 
                               String error,
                               @RequestParam(value="logout", required = false)
                               String logout) {
         
-        ModelAndView model = new ModelAndView();
+        ModelAndView model = new ModelAndView("login");
+        System.out.println("Auth controller started...");
         if(error != null) {
             model.addObject("error","Invalid username and password!");
         }

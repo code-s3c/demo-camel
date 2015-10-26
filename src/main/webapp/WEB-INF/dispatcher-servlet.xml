@@ -31,7 +31,7 @@
     <context:annotation-config/>
     
     <!-- Enable Spring to Automatically Scan Components -->
-    <context:component-scan base-package="com.sab2i.demo.camel"/>
+    <context:component-scan base-package="com.sab2i.demo.camel.controller"/>
     
     <!-- Configure the ViewResolver for spring web requests -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -45,18 +45,18 @@
     
     <!-- Security Url's to Intercept -->
     <security:http auto-config="true">
+        <security:intercept-url pattern="/authentication/login.do" access="permitAll()"/>
         <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-        <security:intercept-url pattern="/login" access="permitAll()"/>
         
         <!-- Configuration of the login form -->
-        <security:form-login login-page="/login"
+        <security:form-login login-page="/authentication/login.do"
             default-target-url="/index.html"
-            authentication-failure-url="/login?error"
+            authentication-failure-url="/authentication/login.do?error"
             username-parameter="username"
             password-parameter="password"/>
         
         <!-- Redirection after logout -->
-        <security:logout logout-success-url="/login?logout"/>
+        <security:logout logout-success-url="/authentication/login?logout"/>
         
         <!-- Enable Cross Site Scripting Protection -->
         <security:csrf/>
