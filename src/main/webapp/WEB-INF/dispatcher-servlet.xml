@@ -31,7 +31,7 @@
     <context:annotation-config/>
     
     <!-- Enable Spring to Automatically Scan Components -->
-    <context:component-scan base-package="com.sab2i.demo.camel.controller"/>
+    <context:component-scan base-package="com.sab2i.demo.camel"/>
     
     <!-- Configure the ViewResolver for spring web requests -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -45,7 +45,12 @@
     
     <!-- Security Url's to Intercept -->
     <security:http auto-config="true">
+        <!-- Enable all users to view the login page -->
         <security:intercept-url pattern="/authentication/login.do" access="permitAll()"/>
+        <!-- Enable all users to view resources under assets folder -->
+        <security:intercept-url pattern="/assets/**" access="permitAll()"/>
+        
+        <!-- Must have the role ROLE_USER to access all the other parts of the app -->
         <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
         
         <!-- Configuration of the login form -->
@@ -56,7 +61,8 @@
             password-parameter="password"/>
         
         <!-- Redirection after logout -->
-        <security:logout logout-success-url="/authentication/login?logout"/>
+        <security:logout logout-url="/authentication/logout.do" 
+                         logout-success-url="/authentication/login"/>
         
         <!-- Enable Cross Site Scripting Protection -->
         <security:csrf/>
@@ -64,11 +70,6 @@
     
     <!-- Security Provider -->
     <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="admin" password="password" authorities="ROLE_USER, ROLE_ADMIN" />
-                <security:user name="test" password="test" authorities="ROLE_TEST"/>
-            </security:user-service>
-        </security:authentication-provider>
+        <security:authentication-provider ref="customAuthenticationProvider"/>
     </security:authentication-manager>
 </beans>
