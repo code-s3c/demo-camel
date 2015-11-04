@@ -12,13 +12,9 @@
  */
 package com.sab2i.demo.camel.controller;
 
-import com.sab2i.demo.camel.interfaces.IUserDao;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
-import org.apache.log4j.Priority;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -48,6 +44,13 @@ public class AuthenticationController {
     private static final Logger logger = 
             Logger.getLogger(AuthenticationController.class.getName());
 
+    
+    public AuthenticationController() {
+        //Configuration du proxy sur la jvm
+        System.setProperty("http.proxyHost", "10.5.8.10");
+        System.setProperty("http.proxyPort", "8080");
+    }
+    
     @RequestMapping(value = "/login.do")
     public ModelAndView login(@RequestParam(value = "error", required = false) 
                                 String error,
