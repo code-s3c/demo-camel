@@ -28,11 +28,16 @@
     <body>
         <h1>Listing Quotes</h1>
     
+        <br/>
+        <a href="">Manage Quotes</a>
+        <br/>
         <c:forEach var="quote" items="${quotes}">
-        <table border="1">
+            <table border="1" style="width: 600px">
+            <col width="130"/>
+            <col width="200"/>
             <tr>
                 <td>Name</td>
-                <td>${quote.name}</td>
+                <td style="background-color: gray">${quote.name}</td>
             </tr>
             <tr>
                 <td>Quote Sign</td>
@@ -75,7 +80,7 @@
                 <td>${quote.percentageChange}</td>
             </tr>
         </table>
-            <br/>
+        <br/>
     </c:forEach>
     </body>
 </html>

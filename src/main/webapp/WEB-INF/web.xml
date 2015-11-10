@@ -42,7 +42,7 @@
     
     <welcome-file-list>
         <welcome-file>
-            index.html
+            /quote/getquote.do
         </welcome-file>
     </welcome-file-list>
     

@@ -43,6 +43,11 @@
     
     <!-- Security Configuration -->
     
+    <!-- Password Encoder -->
+    
+    <bean id="passwordEncoder" 
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </bean>
     <!-- Security Url's to Intercept -->
     <security:http auto-config="true">
         <!-- Enable all users to view the login page -->
