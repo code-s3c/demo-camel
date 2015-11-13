@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://www.sab2i.com/demo/camel/ws"
+  xmlns:qte="http://www.sab2i.com/demo/camel/ws"
+  elementFormDefault="qualified"> 
+ 
+  <xs:element name="Quote"> 
+    <xs:complexType> 
+      <xs:sequence> 
+        <xs:element name="symbol" type="xs:string" /> 
+        <xs:element name="last" type="xs:string" />
+        <xs:element name="date" type="xs:string" /> 
+        <xs:element name="time" type="xs:string" /> 
+        <xs:element name="change" type="xs:string" /> 
+        <xs:element name="open" type="xs:string" /> 
+        <xs:element name="high" type="xs:string" /> 
+        <xs:element name="low" type="xs:string" /> 
+        <xs:element name="volume" type="xs:string" /> 
+        <xs:element name="mktCap" type="xs:string" /> 
+        <xs:element name="previousClose" type="xs:string" /> 
+        <xs:element name="precentageChange" type="xs:string" /> 
+        <xs:element name="annRange" type="xs:string" /> 
+        <xs:element name="earns" type="xs:string" /> 
+        <xs:element name="p-e" type="xs:string" /> 
+        <xs:element name="name" type="xs:string" />  
+      </xs:sequence> 
+      <xs:attribute ref="qte:Id" use="required" /> 
+    </xs:complexType> 
+  </xs:element> 
+ 
+  <xs:attribute name="Id" type="xs:int" /> 
+  <xs:attribute name="symbol" type="xs:string"/>
+ 
+  <xs:element name="AddQuoteRequest">
+      <xs:complexType>
+          <xs:attribute ref="qte:symbol" use="required"/>
+      </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="GetAllQuotesRequest">
+      <xs:complexType>
+          <xs:sequence/>
+      </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="RemoveQuoteRequest">
+      <xs:complexType>
+          <xs:attribute ref="qte:symbol" use="required"/>
+      </xs:complexType>
+  </xs:element>
+</xs:schema>

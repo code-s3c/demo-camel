@@ -52,6 +52,7 @@
     <security:http auto-config="true">
         <!-- Enable all users to view the login page -->
         <security:intercept-url pattern="/authentication/login.do" access="permitAll()"/>
+        <security:intercept-url pattern="/admin/managequotes.do" access="hasRole('ROLE_ADMIN')"/>
         <!-- Enable all users to view resources under assets folder -->
         <security:intercept-url pattern="/assets/**" access="permitAll()"/>
         

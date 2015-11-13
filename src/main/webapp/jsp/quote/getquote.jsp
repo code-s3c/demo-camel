@@ -17,6 +17,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,7 +30,10 @@
         <h1>Listing Quotes</h1>
     
         <br/>
-        <a href="">Manage Quotes</a>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <a href="admin/managequotes.do">Manage Quotes</a><br/>
+        </sec:authorize>
+            <a href="authentication/logout.do">Logout</a>
         <br/>
         <c:forEach var="quote" items="${quotes}">
             <table border="1" style="width: 600px">

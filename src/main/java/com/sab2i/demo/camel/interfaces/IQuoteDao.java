@@ -19,4 +19,6 @@ public interface IQuoteDao {
     
     void addQuote(String symbol);
     List<Quote> listAll();
+    Quote findById(long id);
+    void removeBySymbol(String symbol);
 }

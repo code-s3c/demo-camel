@@ -21,6 +21,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
@@ -58,8 +59,37 @@ public class QuoteDaoJPA implements IQuoteDao {
             return quoteList;
         } catch(Exception ex) {
             logger.error("[e] Unable to retrieve quote list");
-            ex.printStackTrace();
             return null;
+        }
+    }
+
+    @Override
+    public Quote findById(long id) {
+        try {
+            EntityManager em = factory.createEntityManager();
+            TypedQuery<Quote> query = em.createNamedQuery("quote.findById", Quote.class);
+            query.setParameter("id", id);
+            Quote quote = query.getSingleResult();
+            return quote;
+        }catch(Exception ex) {
+            logger.error("[e] Unable to retrieve quote by id");
+            return null;
+        }
+    }
+
+    @Override
+    public void removeBySymbol(String symbol) {
+        try {
+            EntityManager em = factory.createEntityManager();
+            TypedQuery<Quote> query = em.createNamedQuery("quote.findBySymbol", Quote.class);
+            query.setParameter("symbol", symbol);
+            Quote quote = query.getSingleResult();
+            em.getTransaction().begin();
+            em.remove(quote);
+            em.getTransaction().commit();
+        }catch(Exception ex) {
+            ex.printStackTrace();
+            logger.error("[e] Unable to remove symbol :"+ex.getCause());
         }
     }
 }

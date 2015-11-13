@@ -46,8 +46,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
         String password = authentication.getCredentials().toString();
         User user = dao.loadByUsername(name);
         
-        System.out.println(password);
-        
         if(user != null && user.getUsername().equals(name) 
                 && encoder.matches(password, user.getPassword())) {
             List<GrantedAuthority> grantedAuths = new ArrayList<>();

@@ -8,6 +8,22 @@
     <packaging>war</packaging>
 
     <name>demo-camel</name>
+    
+    <organization>
+        <name>sab2i</name>
+        <url>http://www.sab2i.com</url>
+    </organization>
+    
+    <contributors>
+        <contributor>
+            <name>André MARTINS</name>
+            <email>andre-martins@sab2i.com</email>
+            <organisation>sab2i</organisation>
+            <roles>
+                <role>Security Auditor</role>
+            </roles>
+        </contributor>
+    </contributors>
 
     <properties>
         <!-- Version of Spring Framework -->

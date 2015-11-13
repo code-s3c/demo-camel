@@ -15,7 +15,8 @@
 
     <body>
         <h1>Manage Quotes</h1>
-
+        
+        <a href="../">Return to main view</a><br/>
         <table border="1">
             <thead>Existing Symbols</thead>
             <tr>
@@ -24,9 +25,13 @@
             </tr>
             <c:forEach var = "quote" items="${quotes}">
                 <tr>
-                    <td>${quote.name}</td>
-                    <td></td>
-                    <td><button>Remove</button></td>
+                    <form action="./removequotesymbol.do" method="POST">
+                        <td><input type="text" name="symbol" value="${quote.name}" readonly/></td>
+                        <td></td>
+                        <!-- csrf token -->
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        <td><input type="submit" value="Remove"/></td>
+                    </form>
                 </tr>
             </c:forEach>
         </table>

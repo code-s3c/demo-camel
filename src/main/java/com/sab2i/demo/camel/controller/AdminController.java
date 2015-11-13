@@ -43,4 +43,10 @@ public class AdminController {
         dao.addQuote(symbol);
         return "redirect:/admin/managequotes.do";
     }
+    
+    @RequestMapping(value = "removequotesymbol.do", method = RequestMethod.POST)
+    public String removeQuoteSymbol(@RequestParam("symbol") String symbol) {
+        dao.removeBySymbol(symbol);
+        return "redirect:/admin/managequotes.do";
+    }
 }
