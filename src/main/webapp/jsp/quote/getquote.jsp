@@ -49,39 +49,39 @@
             </tr>
             <tr>
                 <td>Last Value:</td>
-                <td>${quote.last}</td>
+                <td><c:out value="${quote.last}"/></td>
             </tr>
             <tr>
                 <td>Date</td>
-                <td>${quote.date}</td>
+                <td><c:out value="${quote.date}"/></td>
             </tr>
             <tr>
                 <td>Time</td>
-                <td>${quote.time}</td>
+                <td><c:out value="${quote.time}"/></td>
             </tr>
             <tr>
                 <td>Change</td>
-                <td>${quote.change}</td>
+                <td><c:out value="${quote.change}"/></td>
             </tr>
             <tr>
                 <td>Open</td>
-                <td>${quote.open}</td>
+                <td><c:out value="${quote.open}"/></td>
             </tr>
             <tr>
                 <td>High</td>
-                <td>${quote.high}</td>
+                <td><c:out value="${quote.high}"/></td>
             </tr>
             <tr>
                 <td>Low</td>
-                <td>${quote.low}</td>
+                <td><c:out value="${quote.low}"/></td>
             </tr>
             <tr>
                 <td>Previous Close</td>
-                <td>${quote.previousClose}</td>
+                <td><c:out value="${quote.previousClose}"/></td>
             </tr>
             <tr>
                 <td>Percentage Change</td>
-                <td>${quote.percentageChange}</td>
+                <td><c:out value="${quote.percentageChange}"/></td>
             </tr>
         </table>
         <br/>
