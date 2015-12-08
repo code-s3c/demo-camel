@@ -46,9 +46,9 @@ public class AuthenticationController {
 
     
     public AuthenticationController() {
-        //Configuration du proxy sur la jvm
-        System.setProperty("http.proxyHost", "10.5.8.10");
-        System.setProperty("http.proxyPort", "8080");
+        //Configuration du proxy sur la jvm - A ACTIVER SI BESOIN
+        /*System.setProperty("http.proxyHost", "10.5.8.10");
+        System.setProperty("http.proxyPort", "8080");*/
     }
     
     @RequestMapping(value = "/login.do")
